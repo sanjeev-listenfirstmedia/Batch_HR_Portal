@@ -28,7 +28,7 @@ export async function applyMonthlyPaidAccrual(
     WITH candidates AS (
       SELECT elb.id AS balance_id, elb."userId" AS user_id
       FROM public.employee_leave_balances elb
-      INNER JOIN public.employee_profiles ep ON ep.id = elb."userId"
+      INNER JOIN public.employee_profiles ep ON ep."userId" = elb."userId"
       WHERE elb."leaveYearId" = $1
         AND elb.type = 'PAID'
         AND ${act.clause}
