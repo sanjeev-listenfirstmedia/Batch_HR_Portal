@@ -44,14 +44,11 @@ provider:
     # Base URL for email template images (contents of public/ folder uploaded to S3 / CDN).
     # Leave empty to use inline SVG fallbacks. See .env.example for setup instructions.
     CELEBRATION_ASSET_BASE_URL: ${env:CELEBRATION_ASSET_BASE_URL, ''}
-  iam:
-    role:
-      statements:
-        - Effect: Allow
-          Action:
-            - ses:SendEmail
-            - ses:SendRawEmail
-          Resource: "*"
+    # Brevo SMTP relay — replaces Amazon SES
+    SMTP_HOST: ${env:SMTP_HOST, 'smtp-relay.brevo.com'}
+    SMTP_PORT: ${env:SMTP_PORT, '587'}
+    SMTP_USER: ${env:SMTP_USER, ''}
+    SMTP_PASSWORD: ${env:SMTP_PASSWORD, ''}
 
 plugins:
   - serverless-esbuild

@@ -17,14 +17,15 @@
     "upload:assets": "node --import tsx src/scripts/uploadAssets.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "^3.967.0",
     "luxon": "^3.5.0",
+    "nodemailer": "^7.0.0",
     "pg": "^8.16.3"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.152",
     "@types/luxon": "^3.7.1",
     "@types/node": "^20.14.0",
+    "@types/nodemailer": "^6.4.0",
     "@types/pg": "^8.15.5",
     "dotenv": "^16.4.5",
     "serverless": "^3.40.0",

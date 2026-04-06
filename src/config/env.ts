@@ -18,10 +18,22 @@ export type AppConfig = {
   AWS_REGION: string;
   APP_TIMEZONE: string;
   SYSTEM_USER_ID: string;
+  /** Brevo SMTP relay host */
+  SMTP_HOST: string;
+  /** Brevo SMTP port (587 = STARTTLS) */
+  SMTP_PORT: number;
+  /** Brevo SMTP login (the smtp-brevo.com address) */
+  SMTP_USER: string;
+  /** Brevo SMTP password */
+  SMTP_PASSWORD: string;
+  /** From address shown in delivered mail */
   SES_FROM_EMAIL: string;
+  /** Display name shown alongside the from address */
   SES_FROM_NAME: string;
+  /** Recipient inbox for all celebration notifications */
   SES_NOTIFICATION_TO: string;
   SES_REPLY_TO: string;
+  /** Kept for config-shape compatibility; unused with SMTP transport */
   SES_CONFIGURATION_SET: string;
   LEAVE_ACCRUAL_AMOUNT: number;
   BATCH_HOUR: number;
@@ -98,6 +110,10 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     AWS_REGION: env.AWS_REGION ?? env.AWS_DEFAULT_REGION ?? "ap-south-1",
     APP_TIMEZONE: env.APP_TIMEZONE ?? "Asia/Kolkata",
     SYSTEM_USER_ID: env.SYSTEM_USER_ID ?? "",
+    SMTP_HOST: env.SMTP_HOST ?? "smtp-relay.brevo.com",
+    SMTP_PORT: parseIntEnv("SMTP_PORT", env.SMTP_PORT, 587),
+    SMTP_USER: env.SMTP_USER ?? "",
+    SMTP_PASSWORD: env.SMTP_PASSWORD ?? "",
     SES_FROM_EMAIL: env.SES_FROM_EMAIL ?? "",
     SES_FROM_NAME: env.SES_FROM_NAME ?? "HR Batch",
     SES_NOTIFICATION_TO: env.SES_NOTIFICATION_TO ?? "",
