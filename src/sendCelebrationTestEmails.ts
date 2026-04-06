@@ -49,24 +49,38 @@ async function main() {
   };
 
   const ses = createSesClient(config);
+  const multi = process.argv.includes("--multi");
 
-  const b = birthdayEmail([{ userId: "test-birthday", displayName: "Sample Teammate" }]);
+  const b = multi
+    ? birthdayEmail([
+        { userId: "test-b1", displayName: "Jane Smith" },
+        { userId: "test-b2", displayName: "Raj Patel" },
+        { userId: "test-b3", displayName: "Maria Garcia" },
+      ])
+    : birthdayEmail([{ userId: "test-birthday", displayName: "Sample Teammate" }]);
+
   await sendNotificationEmail(
     ses,
     sesConfig,
     { subject: `[TEST] ${b.subject}`, htmlBody: b.html, textBody: b.text },
     log,
   );
-  console.log("Sent birthday test email to", to);
+  console.log(`Sent birthday test email (${multi ? "3 people" : "1 person"}) to`, to);
 
-  const a = anniversaryEmail([{ userId: "test-anniversary", displayName: "Sample Teammate", years: 3 }]);
+  const a = multi
+    ? anniversaryEmail([
+        { userId: "test-a1", displayName: "Jane Smith", years: 5 },
+        { userId: "test-a2", displayName: "Raj Patel", years: 2 },
+      ])
+    : anniversaryEmail([{ userId: "test-anniversary", displayName: "Sample Teammate", years: 3 }]);
+
   await sendNotificationEmail(
     ses,
     sesConfig,
     { subject: `[TEST] ${a.subject}`, htmlBody: a.html, textBody: a.text },
     log,
   );
-  console.log("Sent anniversary test email to", to);
+  console.log(`Sent anniversary test email (${multi ? "2 people" : "1 person"}) to`, to);
 }
 
 main().catch((e) => {
