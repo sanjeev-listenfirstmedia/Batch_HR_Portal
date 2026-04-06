@@ -1,5 +1,5 @@
 import type { AnniversaryPerson } from "../services/celebrationService.js";
-import { renderCelebrationEmail } from "./celebrationLayout.js";
+import { renderAnniversaryCelebrationEmail } from "./celebrationLayout.js";
 
 export function anniversaryEmail(people: AnniversaryPerson[]): { subject: string; html: string; text: string } {
   const subject =
@@ -26,5 +26,5 @@ ${list}
 
 Thank you all for helping build what we are — today and every day.`;
 
-  return renderCelebrationEmail({ subject, body });
+  return renderAnniversaryCelebrationEmail({ subject, body });
 }

@@ -1,5 +1,5 @@
 import type { CelebrationPerson } from "../services/celebrationService.js";
-import { renderCelebrationEmail } from "./celebrationLayout.js";
+import { renderBirthdayCelebrationEmail } from "./celebrationLayout.js";
 
 export function birthdayEmail(people: CelebrationPerson[]): { subject: string; html: string; text: string } {
   const subject =
@@ -26,5 +26,5 @@ ${list}
 
 This is an automated note from our HR batch — the real magic is when we say it in person.`;
 
-  return renderCelebrationEmail({ subject, body });
+  return renderBirthdayCelebrationEmail({ subject, body });
 }

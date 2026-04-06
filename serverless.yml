@@ -41,6 +41,9 @@ provider:
     DATABASE_SSL_REJECT_UNAUTHORIZED: ${env:DATABASE_SSL_REJECT_UNAUTHORIZED, 'true'}
     # Leave empty: non-localhost URLs use TLS (required for most RDS). Set false only for special local DBs.
     DATABASE_USE_SSL: ${env:DATABASE_USE_SSL, ''}
+    # Base URL for email template images (contents of public/ folder uploaded to S3 / CDN).
+    # Leave empty to use inline SVG fallbacks. See .env.example for setup instructions.
+    CELEBRATION_ASSET_BASE_URL: ${env:CELEBRATION_ASSET_BASE_URL, ''}
   iam:
     role:
       statements:

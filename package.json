@@ -12,7 +12,9 @@
     "test:watch": "vitest",
     "sls:deploy": "serverless deploy",
     "sls:invoke": "serverless invoke -f dailyBatch --log",
-    "local:run": "node --import tsx src/localRun.ts"
+    "local:run": "node --import tsx src/localRun.ts",
+    "test:celebration-emails": "node --import tsx src/sendCelebrationTestEmails.ts",
+    "upload:assets": "node --import tsx src/scripts/uploadAssets.ts"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.967.0",
