@@ -35,7 +35,7 @@ No REST API or UI — batch only.
 | `BATCH_HOUR` / `BATCH_MINUTE` | No | **Documentation / local intent**; real schedule is `SCHEDULE_CRON` (UTC). |
 | `SCHEDULE_CRON` | No | **Deploy-time** EventBridge expression. Default `cron(31 2 * * ? *)` = **08:01 IST**. |
 | `ACTIVE_EMPLOYEE_STATUSES` | No | CSV allowlist; if non-empty, only these statuses are “active”. |
-| `INACTIVE_EMPLOYEE_STATUSES` | No | CSV blocklist when allowlist empty; default `INACTIVE`. |
+| `INACTIVE_EMPLOYEE_STATUSES` | No | CSV blocklist when allowlist empty; default `DISABLED,INACTIVE` (case-insensitive). |
 | `LEAVE_YEAR_LOOKUP_MODE` | Yes (accrual) | `env` or `table` (see below). |
 | `CURRENT_LEAVE_YEAR_ID` | If `env` mode | Fixed leave year id. |
 | `LEAVE_YEAR_TABLE` / `LEAVE_YEAR_ID_COLUMN` / `LEAVE_YEAR_START_COLUMN` / `LEAVE_YEAR_END_COLUMN` | If `table` mode | Dynamic lookup (validated identifiers). |

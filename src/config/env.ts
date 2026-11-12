@@ -125,7 +125,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): AppConfig {
     ACTIVE_EMPLOYEE_STATUSES: splitCsv(env.ACTIVE_EMPLOYEE_STATUSES),
     INACTIVE_EMPLOYEE_STATUSES: splitCsv(env.INACTIVE_EMPLOYEE_STATUSES).length
       ? splitCsv(env.INACTIVE_EMPLOYEE_STATUSES)
-      : ["INACTIVE"],
+      : ["DISABLED", "INACTIVE"],
     LEAVE_YEAR_LOOKUP_MODE: normalizedMode,
     CURRENT_LEAVE_YEAR_ID: env.CURRENT_LEAVE_YEAR_ID ?? "",
     LEAVE_YEAR_TABLE: env.LEAVE_YEAR_TABLE ?? "",
